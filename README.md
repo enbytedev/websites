@@ -1,5 +1,5 @@
-# aeriellaptop.enbyte.dev
-The Aerial Laptop site.
+# enbyte.dev
+The Enbyte site, including the Aerial Laptop subdomain!
 
 Built atop Anti-Airborne, licenses below:
 - [Code License](CODE-LICENSE): GPLv3
