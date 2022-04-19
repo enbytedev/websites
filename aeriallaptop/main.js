@@ -15,10 +15,6 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.get("/:article", (req, res) => {
-
-        if (req.params.article = favicon.ico) {
-                return
-        } else {
                 // read the markdown file
                 const file = matter.read(__dirname + '/articles/' + req.params.article + '.md');
                 
@@ -32,7 +28,6 @@ app.get("/:article", (req, res) => {
                         title: file.data.title,
                         description: file.data.description,
                 });
-        }
 });
 
 app.get("/", (req, res) => {
