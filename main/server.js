@@ -14,5 +14,23 @@ app.get("/", (req, res) => {
 	});
 });
 
+app.get("/banner", (req, res) => {
+	var banner = new Array("banner/bash1.png", 
+		"banner/bash2.png",
+		"banner/html1.png",
+		"banner/python1.png",
+		"banner/java1.png",
+		"banner/java2.png",
+		"banner/java3.png",
+		"banner/java4.png",
+		"banner/js1.png",
+		"banner/js2.png",
+		"banner/js3.png",
+		"banner/js4.png");
+	var rNum = Math.floor(Math.random() * banner.length);
+	res.set('cache-control', 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate')
+	res.sendFile(banner[rNum], { root: "."});
+});
+
 app.listen(3100);
 console.log("Homepage running on port 3100")

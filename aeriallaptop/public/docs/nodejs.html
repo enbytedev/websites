@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<title>NodeJS Setup</title>
+	</head>
+<body>
+<h1>NodeJS Setup</h1>
+
+<p>The following is general documentation for how to download, configure and run a <strong>NodeJS</strong> project from <strong>Aerial Laptop</strong>.</p>
+
+<hr />
+
+<h2>Clone Codebase</h2>
+
+<p><code>git clone &lt;repository&gt;</code> <a href="">^1</a> the repository to your machine.</p>
+
+<p><code>npm i</code> in the working directory to install dependencies.</p>
+
+<h2>Configure</h2>
+
+<p>Depending on the project, it may have a configuration JSON file or dotenv.<a href="">^2</a></p>
+
+<p><strong>If <code>config.json</code> or <code>config/</code> directory:</strong></p>
+
+<p><em>Open the configuration file or directory and set all described parameters inside the JSON file(s).</em></p>
+
+<p><strong>If <code>.env.example</code>:</strong></p>
+
+<p><em>Run the command <code>mv .env.example .env</code> to use the example configuration. Then open .env and set your parameters (ex. <code>nano .env</code>).</em></p>
+
+<h2>Run</h2>
+
+<p>The entry point for Aerial Laptop codebases is <code>main.js</code></p>
+
+<p><code>node main.js</code></p>
+
+<p>It is highly recommended that you install <a href="">PM2 by Keymetrics</a>, a node process manager.</p>
+
+<p><code>pm2 start main.js</code> <a href="">^3</a></p>
+
+<hr />
+
+<p><a href="">^1</a>: The repository placeholder indicates the repository you want to clone. For example, a full command for cloning <strong>Filing Saucer</strong> would be <code>git clone https://github.com/Aerial-Laptop/Filing-Saucer.git</code>.</p>
+
+<p><a href="">^2</a>: Additional configuration may be required for your use case including items such as changing a splash screen or adding a content copyright notice.</p>
+
+<p><a href="">^3</a>: It is recommended to use the argument <em>name</em> when starting a process with PM2. This is done by appending it to the command to create <code>pm2 start main.js --name &lt;codebase/instance name&gt;</code>.</p>
+
+</body>
+</html>
+
