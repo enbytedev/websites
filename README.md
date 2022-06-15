@@ -1,6 +1,6 @@
-# enbyte.dev
-The Enbyte site, including the Aerial Laptop subdomain!
+# enbyte.dev Website
+The Enbyte site, including the Aerial Laptop (al) subdomain as well as the NGINX configuration for Filing Saucer, Aerial Laptop servers and the main site.
 
-Built atop Anti-Airborne, licenses below:
-- [Code License](CODE-LICENSE): GPLv3
+Licenses below:
+- [Code License](CODE-LICENSE): AGPLv3
 - [Asset License](ASSET-LICENSE): ARR
