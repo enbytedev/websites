@@ -1,22 +1,18 @@
 #!/bin/bash
 #
 # This script was made by @enbytedev for Aerial Laptop projects. 
-# Just as the software this helps install, any unique and/or significant part of this script is licensed under GNU AGPLv3 to ensure irrevocable permission for anyone's use.
+# Just as the software this helps install, this script is licensed under GNU AGPLv3 to ensure irrevocable permission for anyone's use.
 # The name Enbyte and Aerial Laptop as well as the URL and likeless of both Enbyte and Aerial Laptop remain property of Enbyte.
 ##
 
 set -e
 
-case "$OSTYPE" in
-	darwin*)  OS="macos" ;; # Mac 
-	linux*)   OS="linux" ;; # Linux
-	msys*)    echo "INSTALLER >>> Windows installation is not supported!"; exit;; # Windows
-	cygwin*)  echo "INSTALLER >>> Windows installation is not supported!"; exit;; # Windows
-	*)        echo "INSTALLER >>> Unknown OS. Not supported!"; exit;; # Unknown
-esac
-
+##
+# Gather input
+##
 SELECTION=null
-CODEBASE=null
+REPO=null
+TITLE=null
 if [ "$1" = '-cb' ]; then
 	SELECTION=$2
 fi
@@ -32,22 +28,58 @@ fi
 
 if [[ $SELECTION -lt 1 || $SELECTION -gt 2 ]]; then
 	echo "INSTALLER >>> Invalid selection"
-exit 
+	exit 
 fi
 
 case "$SELECTION" in
-	1) CODEBASE="filing-saucer" ;;
-	2) CODEBASE="anti-airborne" ;;
+	1) REPO="https://github.com/Aerial-Laptop/Filing-Saucer.git" ; TITLE="Filing-Saucer" ;;
+	2) REPO="https://github.com/Aerial-Laptop/Anti-Airborne.git" ; TITLE="Anti-Airborne" ;;
 esac
 
-echo "INSTALLER >>> Downloading binary file for $CODEBASE on $OS"
-if [ ! -d "./$CODEBASE" ]; then
-mkdir $CODEBASE
-fi
-cd $CODEBASE
-curl --progress-bar -o "$CODEBASE-$OS" https://al.enbyte.dev/dist/$CODEBASE-$OS 
+##
+# Check for dependencies
+##
 
-chmod a+x "./$CODEBASE-$OS"
-echo "INSTALLER >>> Please set up $CODEBASE with the --configure argument."
-echo ">>> $CODEBASE has been downloaded for $OS! You may run it via ./$CODEBASE-$OS from within the ./$CODEBASE/ directory"
-exit
+# Check for NodeJS
+if which node > /dev/null
+then
+	echo "NodeJS is installed."
+else
+	echo "Please install NodeJS for your operating system to continue."
+	exit
+fi
+
+# Check for/install PM2 https://pm2.keymetrics.io
+if which pm2 > /dev/null
+then
+	echo "PM2 is installed."
+else
+	echo "PM2 is NOT installed!"
+	echo "Installing PM2 by Keymetrics via npm." 
+	echo "You may be asked for your password!"
+	sudo npm install pm2 -g
+fi
+
+echo "The codebase will be placed in a self-titled folder in the current directory."
+echo "Please make sure $TITLE/ does not already exist in:"
+pwd
+while true; do
+	read -p "Do you wish to install the requested codebase at this location? (y/n) " yn
+	case $yn in
+		[Yy]* ) echo "Confirmed"; break;;
+		[Nn]* ) echo "Installation aborted!"; exit;;
+		* ) echo "Please answer yes or no.";;
+	esac
+done
+git clone $REPO
+cd $TITLE
+npm i
+
+echo "You will now be prompted to configure $TITLE"
+node main.js -c
+
+pm2 start main.js --name "$TITLE"
+pm2 save
+
+echo "Success! $TITLE has been installed and is being monitored by PM2."
+echo "PM2 documentation is available at Keymetrics, https://pm2.keymetrics.io/docs/usage/quick-start/"
