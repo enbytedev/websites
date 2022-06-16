@@ -78,6 +78,14 @@ npm i
 echo "You will now be prompted to configure $TITLE"
 node main.js -c
 
+while true; do
+	read -p "Do you wish to use PM2 to monitor and log $TITLE? (y/n) " yn
+	case $yn in
+		[Yy]* ) break;;
+		[Nn]* ) echo "Successfully downloaded $TITLE!"; exit;;
+		* ) echo "Please answer yes or no.";;
+	esac
+done
 pm2 start main.js --name "$TITLE"
 pm2 save
 
