@@ -11,8 +11,7 @@ set -e
 # Gather input
 ##
 SELECTION=null
-REPO=null
-TITLE=null
+PKG=null
 if [ "$1" = '-cb' ]; then
 	SELECTION=$2
 fi
@@ -32,8 +31,8 @@ if [[ $SELECTION -lt 1 || $SELECTION -gt 2 ]]; then
 fi
 
 case "$SELECTION" in
-	1) REPO="https://github.com/Aerial-Laptop/Filing-Saucer.git" ; TITLE="Filing-Saucer" ;;
-	2) REPO="https://github.com/Aerial-Laptop/Anti-Airborne.git" ; TITLE="Anti-Airborne" ;;
+	1) PKG="filing-saucer";;
+	2) PKG="anti-airborne";;
 esac
 
 ##
@@ -61,7 +60,7 @@ else
 fi
 
 echo "The codebase will be placed in a self-titled folder in the current directory."
-echo "Please make sure $TITLE/ does not already exist in:"
+echo "Please make sure $PKG/ does not already exist in:"
 pwd
 while true; do
 	read -p "Do you wish to install the requested codebase at this location? (y/n) " yn
@@ -71,23 +70,26 @@ while true; do
 		* ) echo "Please answer yes or no.";;
 	esac
 done
-git clone $REPO
-cd $TITLE
+
+mkdir $PKG
+cd $PKG
+
+curl -s https://al.enbyte.dev/dist/$PKG.tar.gz | tar xvz
 npm i
 
-echo "You will now be prompted to configure $TITLE"
+echo "You will now be prompted to configure $PKG"
 node main.js -c
 
 while true; do
-	read -p "Do you wish to use PM2 to monitor and log $TITLE? (y/n) " yn
+	read -p "Do you wish to use PM2 to monitor and log $PKG? (y/n) " yn
 	case $yn in
 		[Yy]* ) break;;
-		[Nn]* ) echo "Successfully downloaded $TITLE!"; exit;;
+		[Nn]* ) echo "Successfully downloaded $PKG!"; exit;;
 		* ) echo "Please answer yes or no.";;
 	esac
 done
-pm2 start main.js --name "$TITLE"
+pm2 start main.js --name "$PKG"
 pm2 save
 
-echo "Success! $TITLE has been installed and is being monitored by PM2."
+echo "Success! $PKG has been installed and is being monitored by PM2."
 echo "PM2 documentation is available at Keymetrics, https://pm2.keymetrics.io/docs/usage/quick-start/"
