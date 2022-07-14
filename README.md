@@ -1,3 +1,3 @@
 # Homepage
 
-In this setup, `server.js` runs internally on port 8081.
+In this setup, `main.js` determines whether or not to run components based on .env having a port for the service.
