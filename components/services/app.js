@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const {port} = require('./config.json');
 const initRoutes = require("./func/routing");
 global.__basedir = __dirname;
 app.use(express.urlencoded({ extended: true }));
@@ -9,6 +8,6 @@ app.set('views', __dirname + '/public/dist');
 app.engine('html', require('ejs').renderFile);
 initRoutes(app);
 // Open app.
-app.listen(port, () => {
-  console.log(`Version Checker started successfully on port ${port}!`);
+app.listen(process.env.SERVICES_PORT, () => {
+  console.log(`Services started successfully on port ${process.env.SERVICES_PORT}!`);
 });
