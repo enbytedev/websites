@@ -4,11 +4,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-app.use(express.static('assets/static'));
+app.use(express.static('public'));
 
-const bannerPath = "./components/cdn/assets/banner"
+const cdnPath = "./components/cdn/assets"
 app.get("/banner", (req, res) => {
-	var banner = new Array(`${bannerPath}/bash1.png`, 
+	var banner = new Array(`${cdnPath}/banner/bash1.png`, 
         `${bannerPath}/bash2.png`,
 		`${bannerPath}/html1.png`,
 		`${bannerPath}/python1.png`,
@@ -23,6 +23,10 @@ app.get("/banner", (req, res) => {
 	var rNum = Math.floor(Math.random() * banner.length);
 	res.set('cache-control', 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate')
 	res.sendFile(banner[rNum], { root: "."});
+});
+
+app.get("/install", (req, res) => {
+	res.sendFile(`${cdnPath}/scripts/install.sh`, { root: "."});
 });
 
 app.listen(process.env.CDN_PORT);

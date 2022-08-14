@@ -9,5 +9,5 @@ app.engine('html', require('ejs').renderFile);
 initRoutes(app);
 // Open app.
 app.listen(process.env.SERVICES_PORT, () => {
-  console.log(`Services started successfully on port ${process.env.SERVICES_PORT}!`);
+  console.log(`Services running on port ${process.env.SERVICES_PORT}!`);
 });
