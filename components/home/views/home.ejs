@@ -1,9 +1,8 @@
 <html>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
-  <link href="main.css" rel="stylesheet" type="text/css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <!-- <link href="/public/style.css" rel="stylesheet" type="text/css"/> -->
   <head>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <title>Enbyte</title>
     <link rel="icon" href="logo.png">
     <meta property="og:title" content="Enbyte">
@@ -13,42 +12,136 @@
     <meta property="og:type" content="article">
   </head>
   <body>
-    <div id=wrapper>
-      <h1 class="text-center">Hello, I'm <b>Enbyte</b>!</h1>
-      <div id="break">
-        <br><br><br><br><br><br><br><br>
+<!--<div class="section">-->
+      <div class="glass-pink">
+        <h1>Hello, I'm <b>Enbyte</b>!</h1>
+        <h2><i>welcome to my corner of the internet!</i></h2>
+        <a href="https://github.com/enbytedev/"><button class="button-blue">GitHub</button></a>
+        <a href="https://www.npmjs.com/~enbytedev"><button class="button-blue">npmjs</button></a>
+        <a href="mailto:me@enbyte.dev?subject=[enbyte.dev]:"><button class="button-pink">Email Me</button></a>
       </div>
-      <div>
-        <br>
-        <h2 class="text-center text-dark"><b>Welcome to my side of the internet!</b></h2>
-        <hr class="strong">
-        <h4 class="text-center">My GitHub hosts my projects and Gists.</h4>
-        <a href="https://github.com/enbytedev" class="text-center text-muted"><h3><b>GitHub</b> -- Enbyte</h3></a>
-        <a href="https://gist.github.com/enbytedev" class="text-center text-muted"><h3><b>Gists</b> -- Enbyte</h3></a>
-        <hr class="strong">
-          <a href="mailto:me@enbyte.dev?subject=[enbyte.dev]:" class="text-center text-dark"><h1><b>Email Me</b></h1></a>
-        <br>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
-        <script>
-          VANTA.TOPOLOGY({
-            el: "#break",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x0,
-            backgroundColor: 0xFFFFFF
-          })
-        </script>
-        </script>
+      <div class="glass-blue">
+        <h1><i>current best item</i></h1>
+        <a href="https://github.com/enbytedev/Filing-Saucer/tree/rewrite"><img src="https://raw.githubusercontent.com/enbytedev/Filing-Saucer/rewrite/ICON.png" alt="" width="250" height="250"></a>
+      </div>
+      <div class="glass-blue">
+        <h1><i>my tools on npm</i></h1>
+        <a href="https://www.npmjs.com/package/confectionery"><img src="https://raw.githubusercontent.com/enbytedev/enbytedev/main/assets/projects/confectionery.png" alt="" width="250" height="250"></a>
+        <a href="https://www.npmjs.com/package/sugarcube"></a><img src="https://raw.githubusercontent.com/enbytedev/enbytedev/main/assets/projects/sugarcube.png" alt="" width="250" height="250"></a>
+<!--  </div>-->
+    </div>
   </body>
-      </div>
-        <footer>
-          <p class="text-center text-muted"><small>(c) Enbyte 2022</small></p>
-        </footer>
+  <style>
+body {
+/*  margin: 0;*/
+    /* Make sure any reasonable browser can use a preferred font. system-ui is best when placed first since it can speed up load times. */
+    font-family: system-ui, Arial, sans-serif, Verdana, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    vertical-align: middle;
+    /* All content is centered */
+    text-align:center;
+    /* Set background to the gradient */
+    background: rgb(205,136,205);
+    background: linear-gradient(306deg, rgba(205,136,205,1) 0%, rgba(56,172,255,0.8029586834733894) 100%);
+}
+ 
+.container {
+    background: #0A2463;
+/*  min-height: 100vh;*/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.section {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: .3rem;
+    flex-direction: row;
+    align-items: center;
+}
+
+.glass-pink {
+    background: rgba( 245, 82, 179, 0.45 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    margin: 50; margin-bottom: 20;
+}
+
+
+.glass-blue {
+    background: rgba(82, 191, 245, 0.45);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    margin: 100; margin-bottom: 10;
+}
+
+.glass-clear {
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.button-blue {
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 16px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    background: rgba(82, 191, 245, 0.45);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+ }
+
+.button-blue:hover {
+    background: rgba(82, 191, 245, 0.8);
+}
+
+.button-pink {
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 16px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    background: rgba( 245, 82, 179, 0.45 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+ }
+
+.button-pink:hover {
+    background: rgba(245, 82, 179, 0.8);
+}
+    
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: portrait) { 
+  .glass-blue {
+    margin: 15; margin-bottom: 5;
+  }
+  .glass-pink {
+    margin: 15; margin-bottom: 5;
+  }
+}
+
+  </style>
 </html>
