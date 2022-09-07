@@ -118,7 +118,7 @@ Filing Saucer
 
 c_filing_saucer() {
     echo "Cloning Filing Saucer..."
-    git clone https://github.com/enbytedev/Filing-Saucer
+    git clone https://github.com/enbytedev/Filing-Saucer-legacy
     echo "Done."
     exit
 }
@@ -127,7 +127,7 @@ i_filing_saucer() {
     echo "Installing Filing Saucer..."
     checkPm2
     if [ "$PM2" = true ]; then
-        git clone https://github.com/enbytedev/Filing-Saucer
+        git clone https://github.com/enbytedev/Filing-Saucer-legacy
         cd Filing-Saucer || exit
         npm install
         pm2 start main.js --name "Filing-Saucer"
